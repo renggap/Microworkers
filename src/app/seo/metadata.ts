@@ -1,26 +1,31 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import JsonLdSchema from "@/app/seo/JsonLdSchema";
-import { metadata as seoMetadata } from "@/app/seo/metadata";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  ...seoMetadata,
   title: {
     default: "Micro Worker Indonesia - Connect. Work. Grow.",
     template: "%s | Micro Worker Indonesia"
   },
   description: "Platform micro worker Indonesia yang mempertemukan employer dengan talenta terbaik. Temukan pekerjaan fleksibel atau worker berkualitas untuk campaign Anda.",
+  keywords: [
+    "micro worker",
+    "microworker",
+    "platform micro worker",
+    "freelancer Indonesia",
+    "pekerjaan fleksibel",
+    "remote work Indonesia",
+    "talent platform",
+    "campaign management",
+    "digital workforce",
+    "sistem pengelolaan pekerjaan"
+  ],
+  authors: [{ name: "Micro Worker Indonesia" }],
+  creator: "Micro Worker Indonesia",
+  publisher: "Micro Worker Indonesia",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false
+  },
   openGraph: {
     type: "website",
     locale: "id_ID",
@@ -30,7 +35,7 @@ export const metadata: Metadata = {
     description: "Platform micro worker Indonesia yang mempertemukan employer dengan talenta terbaik. Temukan pekerjaan fleksibel atau worker berkualitas untuk campaign Anda.",
     images: [
       {
-        url: "/images/og-image.png",
+        url: "/images/logo-og.png",
         width: 1200,
         height: 630,
         alt: "Micro Worker Indonesia - Platform micro worker terpercaya"
@@ -55,28 +60,10 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1
     }
-  }
+  },
+  verification: {
+    google: "YOUR_GOOGLE_VERIFICATION_CODE",
+    yandex: "YOUR_YANDEX_VERIFICATION_CODE"
+  },
+  category: "technology"
 };
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="id">
-      <head>
-        <JsonLdSchema />
-        <link rel="icon" href="/favicon.png" sizes="any" />
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/images/logo-og.png" />
-        <link rel="canonical" href="https://microworker.my.id" />
-      </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
-  );
-}
