@@ -17,6 +17,9 @@
 /.next/
 /out/
 
+# vinext/nitro build output
+/.output/
+
 # production
 /build
 
